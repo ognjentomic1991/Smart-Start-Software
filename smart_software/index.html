@@ -1,0 +1,113 @@
+!-- <?php include("session.php");?> -->
+<!DOCTYPE html>
+<html lang="en<!-- <?php echo $_SESSION['s_lang']; ?> -->">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="revisit-after" content="7 days">
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="Storm Cookie">
+	<title><?php //lang("Τίτλος", "Title");?>Cookie.com</title>
+	<link href="css/cookie.css" rel="stylesheet" type="text/css" />
+	 <style>
+		/* Always set the map height explicitly to define the size of the div
+		 * element that contains the map. */
+		#map {
+		  height: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>Header</li>
+				<li><a href="#" target="_self">Top Linkies</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div>"For what is a head without a body?"</div>
+	<div id="map"></div>
+	<footer>
+		<nav>
+			<ul>
+				<li>Footer</li>
+				<li><a href="#" target="_self">Bottom Linkies</a></li>
+			</ul>
+		</nav>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script src="js/cookie.js"></script>
+
+	<script>
+		var geocoder;
+		var map;
+		var address = "gandijeva 50, beograd";
+		function initMap() {
+		  var map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 8,
+		    center: {lat: -34.397, lng: 150.644}
+		  });
+		  geocoder = new google.maps.Geocoder();
+		  codeAddress(geocoder, map);
+		}
+
+		function codeAddress(geocoder, map) {
+		  geocoder.geocode({'address': address}, function(results, status) {
+		    if (status === 'OK') {
+		      map.setCenter(results[0].geometry.location);
+		      var marker = new google.maps.Marker({
+		        map: map,
+		        position: results[0].geometry.location
+		      });
+		    } else {
+		      alert('Geocode was not successful for the following reason: ' + status);
+		    }
+		  });
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzjs-bUR6iIl8yGLr60p6-zbdFtRpuXTQ&callback=initMap">	</script>
+</body>
+</html>
+
+
+    <div id="map"></div>
+    <script>
+      var geocoder;
+      var map;
+      var address = "gandijeva 50, beograd";
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        geocoder = new google.maps.Geocoder();
+        codeAddress(geocoder, map);
+      }
+
+      function codeAddress(geocoder, map) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzjs-bUR6iIl8yGLr60p6-zbdFtRpuXTQ&callback=initMap">
+    </script>
